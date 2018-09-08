@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "899620889503",
+    "firebase_url": "https://qsalesapp.firebaseio.com",
+    "project_id": "qsalesapp",
+    "storage_bucket": "qsalesapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899620889503:android:bf7ddbeb6988b0d2",
+        "android_client_info": {
+          "package_name": "com.akakim.koreannightapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899620889503-3p9jb254v1783mtbr8gc8qlkfkm0b34f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZy9_vvPi_z84bRBlyQLRz7CzWN9hoi-0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
