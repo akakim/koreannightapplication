@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
 import android.content.pm.PackageManager
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.app.LoaderManager.LoaderCallbacks
 import android.content.CursorLoader
 import android.content.Loader
@@ -50,8 +49,6 @@ import java.util.*
  */
 class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthStateListener, onFinshListener {
 
-
-
     private var mAuthTask : UserLoginTask? = null
     private var auth      : FirebaseAuth? = null
 
@@ -65,18 +62,12 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
             AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
-
-
     object ProfileQuery {
         val PROJECTION = arrayOf(
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY)
         val ADDRESS = 0
         val IS_PRIMARY = 1
-
-    }
-
-    object SignObject {
 
     }
 
@@ -112,7 +103,7 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
             false
         })
 
-        email_sign_in_button.setOnClickListener { attemptLogin() }
+        btnEmailSignin.setOnClickListener { attemptLogin() }
 
 
 
@@ -205,12 +196,10 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+
             focusView?.requestFocus()
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+
             showProgress(true)
             mAuthTask = UserLoginTask(emailStr, passwordStr,this)
             mAuthTask!!.execute(null as Void?)
@@ -258,9 +247,6 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
                     })
         } else {
 
-
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
             login_progress.visibility = if (show) View.VISIBLE else View.GONE
             login_form.visibility = if (show) View.GONE else View.VISIBLE
         }

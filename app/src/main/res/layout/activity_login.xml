@@ -20,11 +20,12 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-    <ScrollView
+
+    <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
@@ -67,12 +68,14 @@
 
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/btnEmailSignin"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="#fff"
                 android:textStyle="bold" />
 
             <com.google.android.gms.common.SignInButton
@@ -81,5 +84,8 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-    </ScrollView>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
 </LinearLayout>
