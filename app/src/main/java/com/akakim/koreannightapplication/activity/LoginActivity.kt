@@ -41,6 +41,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.layout_login_form.*
 import java.util.*
 
 
@@ -97,15 +98,24 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
         populateAutoComplete()
         password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                attemptLogin()
+                attemptLoginAndSignup()
+//                attemptLogin()
                 return@OnEditorActionListener true
             }
             false
         })
 
-        btnEmailSignin.setOnClickListener { attemptLogin() }
+        btnEmailSignin.setOnClickListener {
+
+            attemptLoginAndSignup()
+//            attemptLogin()
+        }
 
 
+
+        btnEmailSignUp.setOnClickListener{
+
+        }
 
         btnGoogleSign.setOnClickListener {    startActivity( gsoClient.signInIntent )  }
     }
@@ -138,6 +148,8 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true
         }
+
+
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
             Snackbar.make(email, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok,
@@ -161,6 +173,9 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
     }
 
 
+    /**
+     * 참고
+     */
     private fun attemptLogin() {
 
 
@@ -201,11 +216,39 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
         } else {
 
             showProgress(true)
-            mAuthTask = UserLoginTask(emailStr, passwordStr,this)
-            mAuthTask!!.execute(null as Void?)
+//            mAuthTask = UserLoginTask(emailStr, passwordStr,this)
+//            mAuthTask!!.execute(null as Void?)
         }
     }
 
+    private fun attemptLoginAndSignup(){
+
+
+        var user : FirebaseUser? = FirebaseAuth.getInstance().currentUser
+//        FirebaseAuth.getInstance().create
+
+        if (user == null ){
+           // user is sign up
+
+
+        }else {
+            // No suser is signed up
+        }
+    }
+
+
+//    private fun attemptSignup(){
+//
+//        var signupIntent  = Intent( this,
+//    }
+
+    private fun getCurrentUser(){
+
+        var user = FirebaseAuth.getInstance().currentUser
+
+
+
+    }
     private fun isEmailValid(email: String): Boolean {
 
         return email.contains("@")
@@ -354,8 +397,6 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor>,FirebaseAuth.AuthS
     private fun updateUI( user : FirebaseUser? ){
 
         user?.let {
-
-
 
 
 
